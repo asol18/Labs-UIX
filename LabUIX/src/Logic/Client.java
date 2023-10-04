@@ -49,7 +49,9 @@ public class Client {
     public void setTramiteTime(int tramiteTime) {
         this.tramiteTime = tramiteTime;
     }
-    
+    public void elapsedTime(){
+        time++;
+    }
     private String generatedAleatoryPriority(int clientNumber){
         Random random = new Random();
         for (int i = 0; i < 10; i++) {

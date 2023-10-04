@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Box {
     private int totalClientsAttending;
-    private List<Client> waitingLine; 
+    private List<Client> waitingQueue; 
     private int totalAttendingTime;
     private int actualTimeClient;
     private int AttendingClients;
@@ -20,7 +20,7 @@ public class Box {
         this.actualClient= null;
         this.boxNumber= boxNumber;
     }
-    public boolean free(){
+    public boolean isFree(){
         return actualClient== null;
     }
 
@@ -28,8 +28,8 @@ public class Box {
         return totalClientsAttending;
     }
 
-    public List<Client> getWaitingLine() {
-        return waitingLine;
+    public List<Client> getWaitingQueue() {
+        return waitingQueue;
     }
     
     public int getTotalAttendingTime() {
@@ -41,7 +41,7 @@ public class Box {
     }
 
     public int getAttendingClients() {
-        return AttendingClients++;
+        return AttendingClients;
     }
     
     public int getAttendingTime() {
@@ -58,6 +58,25 @@ public class Box {
 
     public int getBoxNumber() {
         return boxNumber;
+    }
+
+    public int incrementAttendingClients() {
+       return AttendingClients++;
+    }
+    
+    public void attendingClient() {
+    if (actualClient != null) {
+        actualClient.elapsedTime();
+        actualTimeClient++;
+        totalAttendingTime++;
+        if (actualClient.getTime() >= actualClient.getTramiteTime()) {
+            actualClient= null;
+        }
+    }
+}
+    public void AttendingClient(Client client) {
+       actualClient= client;
+       actualTimeClient= 0;
     }
 
 }
