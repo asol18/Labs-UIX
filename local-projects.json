@@ -1,0 +1,6 @@
+{
+  "java": [
+    "Lab1/build.xml",
+    "LabUIX/build.xml"
+  ]
+}
